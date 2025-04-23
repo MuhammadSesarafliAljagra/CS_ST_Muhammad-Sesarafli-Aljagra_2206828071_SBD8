@@ -1,8 +1,35 @@
-import { useState, useEffect } from 'react';
-import { Menu, X, ChevronRight, Download, Star, MessageSquare, Users } from 'lucide-react';
+import { useState, useEffect } from "react";
+import {
+  Menu,
+  X,
+  ChevronRight,
+  Download,
+  Star,
+  MessageSquare,
+  Users,
+} from "lucide-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXTwitter, faLinkedin, faInstagram, faFacebook } from "@fortawesome/free-brands-svg-icons";
-import { faCarSide, faBowlFood, faWallet, faPhone, faMapLocation, faCopyright } from "@fortawesome/free-solid-svg-icons";
+import {
+  faXTwitter,
+  faLinkedin,
+  faInstagram,
+  faFacebook,
+} from "@fortawesome/free-brands-svg-icons";
+import {
+  faCarSide,
+  faBowlFood,
+  faWallet,
+  faPhone,
+  faMapLocation,
+  faCopyright,
+  faCheck,
+  faTruck,
+  faShoppingCart,
+  faReceipt,
+  faHandHoldingHand,
+  faBoxesPacking,
+  faTaxi,
+} from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import Logos from "./assets/gojek-seeklogo.svg";
 import screenshot from "./assets/0_6BCwpHsJJY8LLniO.gif";
@@ -15,6 +42,7 @@ import "./index.css";
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showAllServices, setShowAllServices] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,6 +69,54 @@ function App() {
       setIsMenuOpen(false);
     }
   };
+
+  const services = [
+    {
+      icon: faCarSide,
+      title: "GoRide & GoCar",
+      description: "Reliable transportation solution.",
+    },
+    {
+      icon: faBowlFood,
+      title: "GoFood",
+      description: "Largest food delivery service in Indonesia.",
+    },
+    {
+      icon: faWallet,
+      title: "GoPay",
+      description: "Leading digital payment solution.",
+    },
+    {
+      icon: faBoxesPacking,
+      title: "GoSend",
+      description: "Fast and reliable courier service.",
+    },
+    {
+      icon: faShoppingCart,
+      title: "GoMart",
+      description: "Online grocery shopping made easy.",
+    },
+    {
+      icon: faReceipt,
+      title: "GoTagihan",
+      description: "Pay bills without hassle.",
+    },
+    {
+      icon: faHandHoldingHand,
+      title: "GoGive",
+      description: "Make donations and zakat.",
+    },
+    {
+      icon: faTruck,
+      title: "GoBox",
+      description: "Solutions for large scale shipping needs.",
+    },
+    {
+      icon: faTaxi,
+      title: "GoBlueBird",
+      description: "Reliable transportation solution.",
+    },
+  ];
 
   return (
     <div className="font-sans">
@@ -243,76 +319,40 @@ function App() {
           </div>
 
           <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-
-            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100">
-              <div className="h-14 w-14 bg-green-100 rounded-lg flex items-center justify-center mb-6">
-                <FontAwesomeIcon
-                  icon={faCarSide}
-                  className="h-8 w-8 text-green-600"
-                />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900">
-                GoRide & GoCar
-              </h3>
-              <p className="mt-3 text-gray-600">
-                Your reliable transportation solution. Quick, safe rides to get
-                you where you need to go in the city.
-              </p>
-              <a
-                href="#"
-                className="mt-4 inline-flex items-center text-green-600 hover:text-green-700"
-              >
-                Learn more
-                <ChevronRight size={16} className="ml-1" />
-              </a>
-            </div>
-
-            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100">
-              <div className="h-14 w-14 bg-green-100 rounded-lg flex items-center justify-center mb-6">
-                <FontAwesomeIcon
-                  icon={faBowlFood}
-                  className="h-8 w-8 text-green-600"
-                />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900">GoFood</h3>
-              <p className="mt-3 text-gray-600">
-                Indonesia's largest food delivery service with over 400,000
-                merchants. From street food to fine dining.
-              </p>
-              <a
-                href="#"
-                className="mt-4 inline-flex items-center text-green-600 hover:text-green-700"
-              >
-                Learn more
-                <ChevronRight size={16} className="ml-1" />
-              </a>
-            </div>
-
-            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100">
-              <div className="h-14 w-14 bg-green-100 rounded-lg flex items-center justify-center mb-6">
-                <FontAwesomeIcon
-                  icon={faWallet}
-                  className="h-8 w-8 text-green-600"
-                />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900">GoPay</h3>
-              <p className="mt-3 text-gray-600">
-                Indonesia's leading digital payment solution. Pay bills, shop
-                online, and send money with ease.
-              </p>
-              <a
-                href="#"
-                className="mt-4 inline-flex items-center text-green-600 hover:text-green-700"
-              >
-                Learn more
-                <ChevronRight size={16} className="ml-1" />
-              </a>
-            </div>
+            {services
+              .slice(0, showAllServices ? services.length : 3)
+              .map((service, index) => (
+                <div
+                  key={index}
+                  className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100"
+                >
+                  <div className="h-14 w-14 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+                    <FontAwesomeIcon
+                      icon={service.icon}
+                      className="h-8 w-8 text-green-600"
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900">
+                    {service.title}
+                  </h3>
+                  <p className="mt-3 text-gray-600">{service.description}</p>
+                  <a
+                    href="#"
+                    className="mt-4 inline-flex items-center text-green-600 hover:text-green-700"
+                  >
+                    Learn more
+                    <ChevronRight size={16} className="ml-1" />
+                  </a>
+                </div>
+              ))}
           </div>
 
           <div className="mt-12 text-center">
-            <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 shadow-md">
-              Explore All Services
+            <button
+              className="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 shadow-md"
+              onClick={() => setShowAllServices(!showAllServices)}
+            >
+              {showAllServices ? "Show Less Services" : "Explore All Services"}
             </button>
           </div>
         </div>
@@ -395,17 +435,10 @@ function App() {
                 <div className="mt-8 space-y-4">
                   <div className="flex items-center">
                     <div className="flex-shrink-0 h-6 w-6 rounded-full bg-green-400 flex items-center justify-center">
-                      <svg
+                      <FontAwesomeIcon
+                        icon={faCheck}
                         className="h-4 w-4 text-white"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
+                      />
                     </div>
                     <p className="ml-3 text-gray-700">
                       Engineering, Product, Design, and Business roles available
@@ -413,17 +446,10 @@ function App() {
                   </div>
                   <div className="flex items-center">
                     <div className="flex-shrink-0 h-6 w-6 rounded-full bg-green-400 flex items-center justify-center">
-                      <svg
+                      <FontAwesomeIcon
+                        icon={faCheck}
                         className="h-4 w-4 text-white"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
+                      />
                     </div>
                     <p className="ml-3 text-gray-700">
                       3-6 month programs with mentorship
@@ -431,17 +457,10 @@ function App() {
                   </div>
                   <div className="flex items-center">
                     <div className="flex-shrink-0 h-6 w-6 rounded-full bg-green-400 flex items-center justify-center">
-                      <svg
+                      <FontAwesomeIcon
+                        icon={faCheck}
                         className="h-4 w-4 text-white"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
+                      />
                     </div>
                     <p className="ml-3 text-gray-700">
                       Competitive stipends and potential for full-time roles
