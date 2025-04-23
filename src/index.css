@@ -5,3 +5,20 @@
 html {
   scroll-behavior: smooth;
 }
+
+body.dark {
+  background-color: #1a202c; /* Dark background */
+  color: #f7fafc; /* Light text */
+}
+
+.dark .bg-white {
+  background-color: #2d3748; /* Darker background for white elements */
+}
+
+.dark .text-gray-900 {
+  color: #f7fafc; /* Light text for dark mode */
+}
+
+.dark .text-gray-600 {
+  color: #a0aec0; /* Muted text for dark mode */
+}
