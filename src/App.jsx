@@ -1,4 +1,3 @@
-// src/App.jsx
 import { useState, useEffect } from 'react';
 import { Menu, X, ChevronRight, Download, Star, MessageSquare, Users } from 'lucide-react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -34,11 +33,10 @@ function App() {
     const section = document.getElementById(sectionId);
     if (section) {
       window.scrollTo({
-        top: section.offsetTop - 80, // Offset untuk navbar
+        top: section.offsetTop - 80,
         behavior: "smooth",
       });
     }
-    // Tutup menu mobile jika terbuka
     if (isMenuOpen) {
       setIsMenuOpen(false);
     }
@@ -46,7 +44,6 @@ function App() {
 
   return (
     <div className="font-sans">
-      {/* Navigation */}
       <nav
         className={`fixed w-full z-50 transition-all duration-300 ${
           isScrolled ? "bg-white shadow-md" : "bg-transparent"
@@ -69,7 +66,6 @@ function App() {
                       top: 0,
                       behavior: "smooth",
                     });
-                    // Tutup menu mobile jika terbuka
                     if (isMenuOpen) {
                       setIsMenuOpen(false);
                     }
@@ -87,7 +83,6 @@ function App() {
                       top: 0,
                       behavior: "smooth",
                     });
-                    // Tutup menu mobile jika terbuka
                     if (isMenuOpen) {
                       setIsMenuOpen(false);
                     }
